@@ -1,9 +1,10 @@
 # WebDollar Restart Script
-These scripts are designed to help you restart your WebDollar node after each PoW (Proof of Work) round to reduce power consumption. Due to a bug in CPU-CPP, it doesn't always release all the threads used during a PoW round resulting in increased power consumpion during the PoS (Proof of Stake) round. This is unnecessary and can be solved by restarting your miner automatically with these scripts.
+These scripts are designed to help you restart your WebDollar node after each PoW (Proof of Work) round. Due to a bug in CPU-CPP, it doesn't always release all the threads used during a PoW round resulting in increased power consumpion during the PoS (Proof of Stake) round. This is unnecessary and can be solved by restarting your miner automatically with these scripts.
 
 # Prerequisites
   - You should have already installed the WebDollar node/miner and tested that it works. If you haven't, see here: https://github.com/WebDollar/Node-WebDollar.
-  - You should ensure you have python3 installed (sudo apt-get install python3)
+  - You should ensure you have python3 installed (e.g. sudo apt-get install python3).
+  - You should ensure you have screen installed (e.g. sudo apt-get install screen).
 
 # Instructions for use with Pools
 1) Clone this repository into a folder
@@ -41,3 +42,7 @@ If you want to return to either screen session, to check on your miner or the sc
   - screen -r restartscript
 
 To terminate the script, simply return to the screen session and issue the CTRL + C command.
+
+
+# Instructions for use during solo mining
+Coming soon!
