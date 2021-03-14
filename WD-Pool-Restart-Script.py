@@ -11,7 +11,7 @@ errorflag = 0
 #Infinite loop, end with CTRL+C
 while True:
 
- #Get last 30 block details from the first block page of webdollar.network
+ #Get last 30 block details from the first two block pages of webdollar.network
  jsonresponse1 = json.loads(requests.get("https://webdollar.network:5001/block?p
 age_number=1").text)
  jsonresponse2 = json.loads(requests.get("https://webdollar.network:5001/block?p
@@ -34,7 +34,7 @@ age_number=2").text)
    print ("Current Block Type: " + str(curblocktype))
    #If current block type is PoW
    if curblocktype == "pow":
-     #Wait 2 minutes before checking again, we don't need to do anything as the miner is running
+     #Wait 1 minute before checking again, we don't need to do anything as the miner is running
      print ("Still mining a PoW block, waiting 1 minute before checking again...")
      print (" ")
      time.sleep(60)
@@ -44,17 +44,17 @@ age_number=2").text)
    elif curblocktype == "pos":
      print ("PoS block after PoW, restarting miner now...")
      #Open screen session and terminate miner
-     subprocess.call(["screen", "-S",  "Miner", "-p", "0", "-X", "stuff", "^C"])
+     subprocess.call(["screen", "-S",  "miner", "-p", "0", "-X", "stuff", "^C"])
      #Wait 10 seconds then open screen session and start miner instance
      time.sleep(10)
-     subprocess.call(["screen", "-S",  "Miner", "-p", "0", "-X", "stuff", "SERVER_PORT=4568 npm run commands^M"])
+     subprocess.call(["screen", "-S",  "miner", "-p", "0", "-X", "stuff", "SERVER_PORT=8080 npm run commands^M"])
      #Wait 20 seconds then open screen session and enter 10 to mine in a pool
      time.sleep(20)
-     subprocess.call(["screen", "-S",  "Miner", "-p", "0", "-X", "stuff", "10^M"])
+     subprocess.call(["screen", "-S",  "miner", "-p", "0", "-X", "stuff", "10^M"])
      #Wait 10 seconds then open screen session and confirm to use existing pool
      time.sleep(10)
-     subprocess.call(["screen", "-S",  "Miner", "-p", "0", "-X", "stuff", "y^M"])
-     #Wait 30 minutes before checking again
+     subprocess.call(["screen", "-S",  "miner", "-p", "0", "-X", "stuff", "y^M"])
+     #Wait 45 minutes before checking again
      print ("Miner restarted, waiting 45 minutes before checking again...")
      print (" ")
      time.sleep(2700)
